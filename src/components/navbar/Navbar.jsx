@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -12,7 +12,7 @@ import logo from '../../images/logo.png'
 // import ReactFlagsSelect from 'react-flags-select';
 import './Navbar.css'
 // import { AppContext } from '../../AppContext';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import FormModal from '../../components/modal/FormModal'
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -44,8 +44,8 @@ const Navbar = (props) => {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 //   const [select, setSelect] = useState("GB");
 //   const {language,setLanguage} = useContext(AppContext);
-  const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const navigate = useNavigate();
+  const [ , setIsModalOpen] = useState(false);
 
 //   const translations = require(`../../translations/${language.toLowerCase()}.json`);
 
@@ -54,9 +54,9 @@ const Navbar = (props) => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
 //   const handleChangeLanguage = (newLang) => {
 //     navigate(`/${newLang.toLowerCase()}/`);

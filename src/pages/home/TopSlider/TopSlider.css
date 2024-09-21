@@ -4,7 +4,7 @@
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling on the whole page */
   }
-  .becomeAgentBttton {
+  .becomeAgentBtttonSlider {
     background-color: #77a32f !important;
     border-radius: 3px !important;
     font-weight: 500 !important;
@@ -13,8 +13,9 @@
     text-align: center !important;
     text-transform: uppercase !important;
     color: #ffff !important;
-    padding: 1.5 1.5em !important;
     border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem  !important;
   }
   .sliderImage {
     width: 100vw;

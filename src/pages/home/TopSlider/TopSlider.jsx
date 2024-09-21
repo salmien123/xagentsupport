@@ -9,7 +9,7 @@ import slider3 from '../../../images/sliderImage2.png';
 import './TopSlider.css';
 
 const TopSlider = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ , setIsModalOpen] = useState(false);
 
   const settings = {
     infinite: true,
@@ -34,7 +34,7 @@ const TopSlider = () => {
   const sliderWrapperStyles = {
     position: "relative",
     width: '100vw',
-    height: { xs: '80vh', sm: '90vh', md: '100vh' }, // Responsive height
+    height: {xs:'60vh', md: '100vh' }, // Responsive height
     overflow: 'hidden',
   };
 
@@ -45,9 +45,12 @@ const TopSlider = () => {
     transform: "translate(-50%, -50%)",
     color: "white",
     zIndex: 2,
-    textAlign: 'center',
+    textAlign: 'left',
+    width:'100vw',
     backgroundColor: "transparent",
-    fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // Responsive font sizes
+    padding:'1.7em',
+    fontWeight:'bold',
+    fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // Responsive font sizes 
   };
 
   return (
@@ -56,19 +59,20 @@ const TopSlider = () => {
       <Box sx={staticTextStyles}>
         <Box component={"h1"}>EARN ONLINE WITH</Box>
         <Box component={"h2"}>1XBET.AGENT</Box>
-        <Box component={"p"}>
+        <Box component={"p"} sx={{fontSize:{md:'1.5rem'}}}>
           Become an agent, accept money, top up your account and draw money for players – 
           or create your own agent network and get a commission.
         </Box>
-        <Box
+      
+       <Box
         component={'button'}
-        className="becomeAgentBttton"
-        sx={{ marginTop: "1em", cursor: "pointer" }}
+        className="becomeAgentBtttonSlider"     
         onClick={handleOpenModal}
         >
           {"BECOME AN AGENT"}
         </Box>
-      </Box>
+       </Box>
+    
 
       {/* Sliding Images */}
       <Slider {...settings}>
@@ -77,6 +81,7 @@ const TopSlider = () => {
             width: '100vw',
             height: { xs: '60vh', sm: '60vh', md: '100vh' }, // Responsive height
             overflow: 'hidden',
+            border:'1px solid green'
           }}>
             <Box
             component={'img'}
