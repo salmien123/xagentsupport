@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import StaticSlider from './staticSliders/StaticSlider';
 import Profitable from './profitable/Profitable';
 import Conditions from './conditions/Conditions';
+import Oppurturnities from './oppurtunities/Oppurturnities';
 
 
 const Homepage = () => {
@@ -18,6 +19,7 @@ const Homepage = () => {
             <StaticSlider />
             <Profitable />
             <Conditions />
+            <Oppurturnities/>
         </Box>
     );
 };
