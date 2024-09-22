@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box } from "@mui/material";
+import { Box  } from "@mui/material";
 import slider1 from '../../../images/sliderImage1.jpg';
 import slider2 from '../../../images/sliderImage3.png';
 import slider3 from '../../../images/sliderImage2.png';
@@ -58,12 +58,11 @@ const TopSlider = () => {
       {/* Static Text Overlay */}
       <Box sx={staticTextStyles}>
         <Box component={"h1"}>EARN ONLINE WITH</Box>
-        <Box component={"h2"}>1XBET.AGENT</Box>
+        <Box component={"h2"}>1XBET.AGENT</Box>              
         <Box component={"p"} sx={{fontSize:{md:'1.5rem'}}}>
           Become an agent, accept money, top up your account and draw money for players – 
           or create your own agent network and get a commission.
-        </Box>
-      
+        </Box>  
        <Box
         component={'button'}
         className="becomeAgentBtttonSlider"     
