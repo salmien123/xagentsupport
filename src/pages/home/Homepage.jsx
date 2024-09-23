@@ -5,6 +5,7 @@ import StaticSlider from './staticSliders/StaticSlider';
 import Profitable from './profitable/Profitable';
 import Conditions from './conditions/Conditions';
 import Oppurturnities from './oppurtunities/Oppurturnities';
+import Contacts from './contacts/Contacts';
 
 
 const Homepage = () => {
@@ -20,6 +21,7 @@ const Homepage = () => {
             <Profitable />
             <Conditions />
             <Oppurturnities/>
+            <Contacts/>
         </Box>
     );
 };

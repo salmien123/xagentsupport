@@ -6,7 +6,6 @@ import icon2 from '../../../images/1-1.png'
 import icon3 from '../../../images/1-3.png';
 import icon4 from '../../../images/1-4.png';
 import phone3 from '../../../images/phone-3-app.png'
-import './Conditions.css'
 
 
 
