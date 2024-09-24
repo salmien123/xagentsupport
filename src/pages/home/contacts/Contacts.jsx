@@ -12,15 +12,14 @@ import './Contacts.css'
 const Contacts = () => {
     return (
         <Box         
-          id='fullContacts'         
-          border='1px solid red'
+          id='fullContacts'                  
           color={'white'}
           padding={'0 5em'}                
         >
-          <Grid container >
+          <Grid  border='1px solid red' padding={'4em'} alignItems={'center'} justifyContent={'center'} container >
             {/* First Section: Contact Information */}
-            <Grid  border='1px solid red' item size={{lg:6,md:4,sm:12,xs:12}}>
-              <Box >
+            <Grid  item size={{lg:6,md:4,sm:12,xs:12}}>
+              <Box>
                 <Typography variant="h1" sx={{ fontSize: '4.5em', mb: 2,fontWeight:'bold' }}>
                   CONTACTS
                 </Typography>
@@ -38,7 +37,7 @@ const Contacts = () => {
             </Grid>
     
             {/* Second Section: Form */}
-            <Grid border='1px solid red' item size={{lg:5,md:5,sm:12,xs:12}}>
+            <Grid  item size={{lg:5,md:5,sm:12,xs:12}}>
               <Paper               
                 sx={{
                   padding: '2em',
@@ -84,7 +83,7 @@ const Contacts = () => {
                     fullWidth
                     variant="contained"
                     sx={{
-                      backgroundColor: '#000', // Change button color
+                      backgroundColor: '#77a32f', 
                       color: 'white',
                       marginTop: '1em',
                       '&:hover': {

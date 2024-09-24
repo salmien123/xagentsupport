@@ -1,6 +1,5 @@
 #fullContacts{
     background-image: url('../../../images/earthmap.png');
-    background-color: rgb(110, 110, 110);
-    opacity: 1;
-    z-index: 1;
+    background-color:#0C1424;
+    opacity:0.83;
 }
