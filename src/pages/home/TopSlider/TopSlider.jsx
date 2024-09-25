@@ -80,7 +80,6 @@ const TopSlider = () => {
             width: '100vw',
             height: { xs: '60vh', sm: '60vh', md: '100vh' }, // Responsive height
             overflow: 'hidden',
-            border:'1px solid green'
           }}>
             <Box
             component={'img'}
