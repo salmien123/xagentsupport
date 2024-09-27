@@ -4,7 +4,6 @@ import {
   Typography,
   TextField,
   Button,
-  Paper,
   Link,
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
@@ -25,13 +24,7 @@ const Contacts = () => {
       <Grid
         container
         alignItems={'center'}
-        justifyContent={'center'}
-        spacing={4}
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-          textAlign: { xs: 'center', md: 'left' },         
-          flexWrap: 'nowrap', // Prevents items from wrapping to the next row
-        }}
+        justifyContent={'center'}    
       >
         {/* First Section: Contact Information */}
         <Grid item size={{md:6,lg:6,xs:10}} textAlign={{ xs: 'center', md: 'left' }}>
@@ -60,50 +53,60 @@ const Contacts = () => {
         </Grid>
 
         {/* Second Section: Form */}
-        <Grid item size={{md:6,lg:6,xs:10}}>
-          <Paper
+        <Grid size={{md:5}}>
+          <Box
             sx={{
-              padding: '0 3em',
-              borderRadius: '10px',
-              margin: '5em', // Center the form
-              border:'1px solid red', 
-              backgroundColor: 'white',
+              padding: '10px 15px',  // Reduced padding
+              borderRadius: '10px',                        
+              backgroundColor: 'white',              
               boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',             
             }}
-          >
-            <Typography variant="h5" gutterBottom textAlign="center">
+          >            
+            <form>
+            <Typography color='black' variant="subtitle1" sx={{ mb: 2 }}>
               Submit your application
             </Typography>
-            <form>
               <TextField
                 fullWidth
                 label="Name"
                 variant="outlined"
-                margin="normal"
+                className='labelApplication'
+                margin='dense'  // Reduced margin
+                InputProps={{
+                  sx: { fontSize: '0.9em' }  // Smaller input text
+                }}
               />
               <TextField
                 fullWidth
                 label="Email"
                 variant="outlined"
-                margin="normal"
+                className='labelApplication'
+                margin='dense'
+                 
               />
               <TextField
                 fullWidth
                 label="Country"
-                variant="outlined"
-                margin="normal"
+               
+                className='labelApplication custom-placeholder'
+                margin='dense'
+              
+                 
               />
               <TextField
                 fullWidth
                 label="Phone"
                 variant="outlined"
-                margin="normal"
+                className='labelApplication'
+                margin='dense'
+                 
               />
               <TextField
                 fullWidth
                 label="Telegram/Others account"
                 variant="outlined"
-                margin="normal"
+                className='labelApplication'
+                margin='dense'                              
               />
               <Button
                 fullWidth
@@ -111,7 +114,9 @@ const Contacts = () => {
                 sx={{
                   backgroundColor: '#77a32f',
                   color: 'white',
-                  marginTop: '1em',
+                  marginTop: '0.75em',  // Smaller margin
+                  padding: '0.5em 0',  // Reduced padding
+                  fontSize: '0.9em',   // Smaller button text
                   '&:hover': {
                     backgroundColor: '#444',
                   },
@@ -120,7 +125,7 @@ const Contacts = () => {
                 Send
               </Button>
             </form>
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </Box>
