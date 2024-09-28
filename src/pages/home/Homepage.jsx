@@ -15,7 +15,7 @@ const Homepage = () => {
     //     setIsModalOpen(true);
     //   };
     return (
-        <Box>
+        <Box id="home">
             <TopSlider />
             <StaticSlider />
             <Profitable />

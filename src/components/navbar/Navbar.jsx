@@ -9,11 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png'
-// import ReactFlagsSelect from 'react-flags-select';
 import './Navbar.css'
 // import { AppContext } from '../../AppContext';
 // import { useNavigate } from 'react-router-dom';
-// import FormModal from '../../components/modal/FormModal'
+import FormModal from '../../components/modal/FormModal'
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -42,32 +41,21 @@ const Navbar = (props) => {
   const [,setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-//   const [select, setSelect] = useState("GB");
-//   const {language,setLanguage} = useContext(AppContext);
-  // const navigate = useNavigate();
-  const [ , setIsModalOpen] = useState(false);
 
-//   const translations = require(`../../translations/${language.toLowerCase()}.json`);
+  // const navigate = useNavigate();
+  const [isModalOpen , setIsModalOpen] = useState(false);
+
 
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
-//   const handleChangeLanguage = (newLang) => {
-//     navigate(`/${newLang.toLowerCase()}/`);
-//   };
-//   const onSelect = (code) => {
-//     if(code === 'SA' || code === 'RU' || code === 'GB'){
-//         setLanguage(code);
-//         handleChangeLanguage(code);
-//         setSelect(code);
-//     }
-// }
+
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -76,10 +64,12 @@ const scrollToViewAndCloseMenu = (scrollToFunction, onCloseFunction) => {
     scrollToFunction();
     onCloseFunction();
   };
+  const scrollToHome = () => {document.getElementById('home').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToBenifits = () => {document.getElementById('benifits').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToConditions = () => {document.getElementById('conditions').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToOppurtunities = () => {document.getElementById('oppurtunitiesSection').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToContact = () => {document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });};
 
-  const scrollToAboutUs = () => {document.getElementById('aboutUs').scrollIntoView({ behavior: 'smooth' });};
-  const scrollToCollaborate = () => {document.getElementById('collaboration').scrollIntoView({ behavior: 'smooth' });};
-  const scrollToContact = () => {document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });};
 
 
   const handleMenuClose = () => {
@@ -112,23 +102,23 @@ const scrollToViewAndCloseMenu = (scrollToFunction, onCloseFunction) => {
         </Box>
       </DialogTitle>
       <DialogContent style={{marginTop:'5em'}}>
-        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={() => scrollToViewAndCloseMenu(scrollToAboutUs, handleMobileMenuClose)}>
-          <Link className='link-style' to="#" onClick={scrollToAboutUs}
+        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={() => scrollToViewAndCloseMenu(scrollToHome, handleMobileMenuClose)}>
+          <Link className='link-style' to="#" onClick={scrollToHome}
           >
             {'Home'}
           </Link>
         </MenuItem>
-        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={() => scrollToViewAndCloseMenu(scrollToCollaborate, handleMobileMenuClose)} >
+        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={() => scrollToViewAndCloseMenu(scrollToBenifits, handleMobileMenuClose)} >
           <Link className='link-style' >
             {'Benifit'}
           </Link>
         </MenuItem>
-        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={()=>scrollToViewAndCloseMenu(scrollToContact, handleMenuClose)}>
+        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={()=>scrollToViewAndCloseMenu(scrollToConditions, handleMenuClose)}>
           <Link className='link-style'   >
             {'Conditions'}
           </Link>
         </MenuItem>
-        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={()=>scrollToViewAndCloseMenu(scrollToContact, handleMenuClose)}>
+        <MenuItem sx={{padding:'1em 0 0 5em'}} onClick={()=>scrollToViewAndCloseMenu(scrollToOppurtunities, handleMenuClose)}>
           <Link className='link-style'   >
             {'Oppurtunities'}
           </Link>
@@ -168,34 +158,18 @@ const scrollToViewAndCloseMenu = (scrollToFunction, onCloseFunction) => {
               </Link>
             </Typography>
             <Box sx={{display: { xs: 'none', md: 'flex', color: 'grey'},order:{lg:2} }}>
-              <MenuItem>     <Link className='link-style' onClick={scrollToAboutUs}>Home</Link>   </MenuItem>
-              <MenuItem >    <Link className='link-style' onClick={scrollToCollaborate}>Benifits</Link>   </MenuItem>
-              <MenuItem>    <Link className='link-style' onClick={scrollToContact}>Conditions</Link>    </MenuItem>
-              <MenuItem>    <Link className='link-style' onClick={scrollToContact}> Oppurtunities</Link>   </MenuItem>
+              <MenuItem>     <Link className='link-style' onClick={scrollToHome}>Home</Link>   </MenuItem>
+              <MenuItem >    <Link className='link-style' onClick={scrollToBenifits}>Benifits</Link>   </MenuItem>
+              <MenuItem>    <Link className='link-style' onClick={scrollToConditions}>Conditions</Link>    </MenuItem>
+              <MenuItem>    <Link className='link-style' onClick={scrollToOppurtunities }> Oppurtunities</Link>   </MenuItem>
               <MenuItem>    <Link className='link-style' onClick={scrollToContact}>Contacts</Link>    </MenuItem>
               <MenuItem className="becomeAgentBttton" sx={{marginLeft:'4.5em'}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</MenuItem>              
-            </Box>
-            {/* language */}
-            {/* <Box sx={{order:{xs:2}}}>
-            <MenuItem >
-                <ReactFlagsSelect                
-                  selected={select}
-                  onSelect={onSelect}
-                  countries={["GB","RU","SA","FR", "es", "ES", "pt", "PT", "zh", "CN", "ja", "JP", "th", "TH", "az", "AZ","kr", "KR", "my", "MY"]}
-                  customLabels={{
-                    GB: "EN",RU: "RU",SA: "AR",FR: "FR", es: "es", ES: "ES", pt: "pt", PT: "PT", CN: "ZH", ZH: "ZH", JP: "JA", JA: "JA", th: "TH", TH: "TH", az: "AZ", AZ: "AZ",AR: "AR", kr: "KR", KR: "KR", my: "MY", MY: "MY"
-                  }}
-                  selectedSize={15}
-                  optionsSize={15} />
-            </MenuItem>
-
-
-            </Box> */}
+            </Box>           
           </Toolbar>
         </AppBar>
       </ElevationScroll>
       <Toolbar />
-      {/* <FormModal open={isModalOpen} handleClose={handleCloseModal} /> */}
+      <FormModal open={isModalOpen} handleClose={handleCloseModal} />
       {renderMobileMenu}     
     </Box>
   );

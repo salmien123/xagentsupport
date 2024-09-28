@@ -7,9 +7,17 @@ import slider1 from '../../../images/sliderImage1.jpg';
 import slider2 from '../../../images/sliderImage3.png';
 import slider3 from '../../../images/sliderImage2.png';
 import './TopSlider.css';
+import FormModal from '../../../components/modal/FormModal'
 
 const TopSlider = () => {
-  const [ , setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
 
   const settings = {
     infinite: true,
@@ -20,12 +28,7 @@ const TopSlider = () => {
     autoplaySpeed: 2000,
     cssEase: "linear"
   };
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const slidesData = [
+const slidesData = [
     { src: slider1 },
     { src: slider2 },
     { src: slider3 },
@@ -96,6 +99,8 @@ const TopSlider = () => {
           </Box>
         ))}
       </Slider>
+      <FormModal open={isModalOpen} handleClose={handleCloseModal} />
+
     </Box>
   );
 };

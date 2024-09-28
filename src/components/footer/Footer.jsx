@@ -1,10 +1,27 @@
-import React from 'react';
-import { Box,Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box,Typography, Button, MenuItem  } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import logo from '../../images/logo.png'
+import { Link } from 'react-router-dom';
+import FormModal from '../../components/modal/FormModal'
 
 
 const Footer = () => {
+  
+  const scrollToBenifits = () => {document.getElementById('benifits').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToConditions = () => {document.getElementById('conditions').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToOppurtunities = () => {document.getElementById('oppurtunitiesSection').scrollIntoView({ behavior: 'smooth' });};
+  const scrollToContact = () => {document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });};
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+
   return (
     <Box 
       sx={{
@@ -25,16 +42,17 @@ const Footer = () => {
         <Grid size={{xs:12,sm:12,md:4,lg:4}} >
           <Grid container spacing={2} justifyContent={{ xs: 'center', md: 'space-around' }}>
             <Grid >
-              <Typography variant="body1">Benifits</Typography>
+            <Typography >    <Link className='link-style' onClick={scrollToBenifits}>Benifits</Link>   </Typography>
+
             </Grid>
             <Grid >
-              <Typography variant="body1">Conditions</Typography>
+            <Typography>    <Link className='link-style' onClick={scrollToConditions}>Conditions</Link>    </Typography>
             </Grid>
             <Grid >
-              <Typography variant="body1">Opportunities</Typography>
+            <Typography>    <Link className='link-style' onClick={scrollToOppurtunities }> Oppurtunities</Link>   </Typography>
             </Grid>
             <Grid >
-              <Typography variant="body1">Contacts</Typography>
+              <Typography>    <Link className='link-style' onClick={scrollToContact}>Contacts</Link>    </Typography>
             </Grid>
           </Grid> <br />
            {/* Copyright & CTA */}
@@ -46,14 +64,12 @@ const Footer = () => {
         </Grid>
        
         <Grid size={{xs:12,sm:12,md:4,lg:4}}>
-          <Button 
-            variant="contained" 
-            sx={{ backgroundColor: '#78a32f', color: 'white', borderRadius: '5px' }}
-          >
-            BECOME AN AGENT
-          </Button>
+        <Button className="becomeAgentBttton" sx={{marginLeft:'4.5em'}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
+
         </Grid>
       </Grid>
+      <FormModal open={isModalOpen} handleClose={handleCloseModal} />
+
     </Box>
   );
 };

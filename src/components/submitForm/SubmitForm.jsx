@@ -1,60 +1,62 @@
-import React from 'react';
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Link,
-} from '@mui/material';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import TextField from '@mui/material/TextField';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import { Box, Button, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import './Contacts.css';
 
-const Contacts = () => {
+// import './SubmitForm.css';
+// import { AppContext } from '../../AppContext';
+
+ const SubmitForm = () => {
+  const { register, reset ,handleSubmit, formState: { errors } } = useForm(); 
+//   const {setSuccess,language} = useContext(AppContext); 
+//   const translations = require(`../../translations/${language.toLowerCase()}.json`);
+ 
+  const createSheetData = (data) => {
+    fetch('https://sheetdb.io/api/v1/n5fjzxbfyd2zo', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        data: [
+            {
+                'name':data.name,
+                "country":data.country,
+                "email":data.email,
+                "phone":data.phone,
+                "contactMethod":data.contactMethod,
+                "nickname":data.nickname,
+            }
+        ]
+    })
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if(data.created ===1){
+    //   setSuccess(true)
+      reset();
+    }
+  });
+
+  }
+  const onSubmit = async data => {
+    try {
+      createSheetData(data)
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+
   return (
-    <Box
-      id="contacts"
-      color={'white'}
-      sx={{
-        padding: { xs: '2em 1em', sm: '3em 2em', md: '5em' }, // Responsive padding
-        backgroundImage: 'url("your-background-image-url")', // Add your background image URL
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <Grid
-        container
-        alignItems={'center'}
-        justifyContent={'center'}    
-      >
-        {/* First Section: Contact Information */}
-        <Grid item size={{md:6,lg:6,xs:10}} textAlign={{ xs: 'center', md: 'left' }}>
-          <Box>
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: { xs: '2.5em', sm: '3.5em', md: '4.5em' }, // Responsive font size
-                mb: 2,
-                fontWeight: 'bold',
-              }}
-            >
-              CONTACTS
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <Link href="https://www.1xbet.com" color="inherit" underline="hover">
-                1xbet.com
-              </Link>
-            </Typography>
-            <Typography variant="body1">
-              <Link href="mailto:Manager@xbetagents.com" color="inherit" underline="hover">
-                Manager@xbetagents.com
-              </Link>
-            </Typography>
-          </Box>
-        </Grid>
-
-        {/* Second Section: Form */}
-        <Grid size={{md:5}}>
-          <Box
+    <Box>
+            <Box
             sx={{
               padding: '10px 15px',  // Reduced padding
               borderRadius: '10px',                        
@@ -112,22 +114,20 @@ const Contacts = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: '#799d44 !important',
+                  backgroundColor: '#799d44',
                   color: 'white',
                   marginTop: '0.75em',  // Smaller margin
                   padding: '0.5em 0',  // Reduced padding
-                  fontSize: '0.9em',
-                  opacity:'revert-layer'   // Smaller button text                  
+                  fontSize: '0.9em',   // Smaller button text                 
                 }}
               >
                 Send
               </Button>
             </form>
           </Box>
-        </Grid>
-      </Grid>
     </Box>
+    
   );
 };
 
-export default Contacts;
+export default SubmitForm;

@@ -55,7 +55,7 @@ const Oppurturnities = () => {
   ];
 
   return (
-    <Box sx={{ p: { xs: '1em', sm: '2em', md: '4em' } }}>
+    <Box sx={{ p: { xs: '1em', sm: '2em', md: '4em' } }} id='oppurtunitiesSection'>
       {oppurtunitiesArray.map((item, index) => (
         <Grid
           id="oppurtunities"

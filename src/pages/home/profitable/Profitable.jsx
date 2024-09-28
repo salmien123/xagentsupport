@@ -35,7 +35,7 @@ const Profitable = () => {
   ];
 
   return (
-    <Box sx={{ padding: { lg: '0 4.1em', md: '0 4.1em', xs: '0 1.1em' } }}>
+    <Box id='benifits' sx={{ padding: { lg: '0 4.1em', md: '0 4.1em', xs: '0 1.1em' } }}>
       <Box component={'h1'} sx={{ fontSize: { lg: '3rem', sm: "1.8rem", xs: '1.8rem', md: '3rem' } }}>
         Why it’s profitable to be an agent?
       </Box>
