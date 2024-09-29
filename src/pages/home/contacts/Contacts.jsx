@@ -42,6 +42,7 @@ const Contacts = () => {
                 sx={{
                   fontSize: { xs: '2.5em', sm: '3em', md: '3.5em' },
                   color: 'white',
+                  fontWeight:'bolder'
                 }}
               >
                 CONTACTS
@@ -63,7 +64,7 @@ const Contacts = () => {
                   width={'8%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
-                  Manager@1xbetagents.com
+                  manager@1xbetsupport.com
                 </Typography>
               </Box>
             </Box>
@@ -75,10 +76,11 @@ const Contacts = () => {
               sx={{
                 backgroundColor: 'white',
                 padding: '2em',
+                borderRadius:'0.4em',
                 boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
               }}
             >
-              <Typography variant='h6' color="black" mb={2}>
+              <Typography variant='h5' color="black" fontWeight={'bolder'} textAlign={'center'} mb={2}>
                 Submit your application
               </Typography>
               <form>

@@ -59,15 +59,19 @@ const SubmitForm = ({ handleClose }) => {
         sx={{
           backgroundColor: 'white',
           padding: '2em',
+          borderRadius:'0.4em',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
           width: { xs: '100vw', md: '40vw' }
         }}
       >
-        <Box display='flex' justifyContent={'space-between'}>
-          <Typography variant='h6' color="black" textAlign={'center'} mb={2}>
-            Submit your application
-          </Typography>
-          <CloseIcon sx={{ color: 'black', cursor: 'pointer', marginTop: '0.3em', }} onClick={handleClose} />
+        <Box display={'flex'} justifyContent={'flex-end'}>
+        <CloseIcon sx={{ color: 'black', cursor: 'pointer',marginBottom:'0.2em'}} onClick={handleClose} />
+
+        </Box>
+        <Box>
+        <Typography variant='h5' color="black" fontWeight={'bolder'} textAlign={'center'} mb={2}>
+                Submit your application
+              </Typography>
         </Box>
         <form>
           <TextField
@@ -114,7 +118,7 @@ const SubmitForm = ({ handleClose }) => {
             fullWidth
             variant="contained"
             sx={{
-              backgroundColor: '#799d44',
+              backgroundColor: '#77a32f',
               color: 'white',
               padding: '0.4em',
             }}

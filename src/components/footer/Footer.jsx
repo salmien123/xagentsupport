@@ -27,20 +27,19 @@ const Footer = () => {
       sx={{
         backgroundColor: '#0c1323', 
         color: 'white', 
-        padding: '2em',
-        textAlign: 'center',
-        mt: '2em'
+        padding:{md:'2em',xs:'1em'        },
+        textAlign: 'center',       
       }}
     >
       <Grid container  sx={{textAlign: { xs: 'center'},justifyContent:{md:'space-around'},alignItems:{xs:'center'}}}>
         {/* Logo */}
         <Grid size={{xs:12,sm:12,md:4,lg:4}} >
-          <Box sx={{width:'60%'}}  component='img' src={logo}/>
+          <Box sx={{width:'55%'}}  component='img' src={logo}/>
         </Grid>
         
         {/* Links */}
         <Grid size={{xs:12,sm:12,md:4,lg:4}} >
-          <Grid container spacing={2} justifyContent={{ xs: 'center', md: 'space-around' }}>
+          <Grid container spacing={1} justifyContent={{ xs: 'center', md: 'space-around' }}>
             <Grid >
             <Typography >    <Link className='link-style' onClick={scrollToBenifits}>Benifits</Link>   </Typography>
 
@@ -56,15 +55,15 @@ const Footer = () => {
             </Grid>
           </Grid> <br />
            {/* Copyright & CTA */}
-        <Grid container spacing={3} justifyContent={{ xs: 'center',sm:'center', md: 'flex-end' }}>
+        <Grid container spacing={2} justifyContent={{ xs: 'center',sm:'center', md: 'flex-end' }}>
           <Box fontSize='0.7em' component="small">
             Copyright © 2007-2024 «1xbet Agent». All rights reserved and protected by law.
           </Box>
         </Grid>
         </Grid>
        
-        <Grid size={{xs:12,sm:12,md:4,lg:4}}>
-        <Button className="becomeAgentBttton" sx={{marginLeft:'4.5em'}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
+        <Grid size={{xs:10,sm:12,md:4,lg:4}}>
+        <Button className="becomeAgentBttton" sx={{marginLeft:{md:'4.5em',xs:'4.2em',sm:'4.4em'},marginTop:{sm:'1em',xs:'1em',md:'0'}}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
 
         </Grid>
       </Grid>
