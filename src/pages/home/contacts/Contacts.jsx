@@ -124,61 +124,96 @@ const Contacts = () => {
               <Typography variant='h5' color="black" fontWeight={'bolder'} textAlign={'center'} mb={2}>
                 Submit your application
               </Typography>
-              <form>
-                <TextField
-                  fullWidth
-                  label="Name"               
-                  variant="outlined"
-                   sx={{ marginBottom: '0.5em' }}
-                  size="small"
-                  {...register("name", { required: "Please fill out this field." })}
-                />
-                 {errors.name && <span className="error-message">{'Enter your name'}</span>}
-                <TextField
-                  fullWidth
-                  label="Email"
-               
-                  variant="outlined"
-                   sx={{ marginBottom: '0.5em' }}
-                  size="small"
-                />
-                <TextField
-                  fullWidth
-                  label="Country"
-                 
-                  variant="outlined"
-                   sx={{ marginBottom: '0.5em' }}
-                  size="small"
-                />
-                <TextField
-                  fullWidth
-                  label="Phone"
-               
-                  variant="outlined"
-                   sx={{ marginBottom: '0.5em' }}
-                  size="small"
-                />
-                <TextField
-                  fullWidth
-                  label="Telegram/Others account"
-               
-                  variant="outlined"
-                  sx={{ marginBottom: '0.5em' }}
-                  size="small"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    backgroundColor: '#799d44',
-                    color: 'white',
-                    padding: '0.5em',
-                  }}
-                >
-                  Send
-                </Button>
-              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+  <TextField
+    fullWidth
+    label="Name"
+    variant="outlined"
+    sx={{ marginBottom: '0.5em' }}
+    size="small"
+    {...register("name", { required: "Please fill out this field." })}
+    error={!!errors.name}
+    helperText={errors.name ? errors.name.message : ''}
+  />
+  
+  <TextField
+    fullWidth
+    label="Email"
+    variant="outlined"
+    sx={{ marginBottom: '0.5em' }}
+    size="small"
+    {...register("email", {
+      required: "Please fill out this field.",
+      pattern: {
+        value: /^\S+@\S+$/i,
+        message: "Please enter a valid email address.",
+      }
+    })}
+    error={!!errors.email}
+    helperText={errors.email ? errors.email.message : ''}
+  />
+
+  <TextField
+    fullWidth
+    label="Country"
+    variant="outlined"
+    sx={{ marginBottom: '0.5em' }}
+    size="small"
+    {...register("country", { required: "Please fill out this field." })}
+    error={!!errors.country}
+    helperText={errors.country ? errors.country.message : ''}
+  />
+
+  <TextField
+    fullWidth
+    label="Phone"
+    variant="outlined"
+    sx={{ marginBottom: '0.5em' }}
+    size="small"
+    {...register("phone", {
+      required: "Please fill out this field.",
+      minLength: {
+        value: 6,
+        message: "Phone number must be at least 6 characters long."
+      },
+      maxLength: {
+        value: 12,
+        message: "Phone number must be no longer than 12 characters."
+      },
+      pattern: {
+        value: /^\d+$/,
+        message: "Please enter a valid phone number."
+      }
+    })}
+    error={!!errors.phone}
+    helperText={errors.phone ? errors.phone.message : ''}
+  />
+
+  <TextField
+    fullWidth
+    label="Telegram/Others account"
+    variant="outlined"
+    sx={{ marginBottom: '0.5em' }}
+    size="small"
+    {...register("nickname", { required: "Please fill out this field." })}
+    error={!!errors.nickname}
+    helperText={errors.nickname ? errors.nickname.message : ''}
+  />
+
+  <Button
+    type="submit"
+    fullWidth
+    variant="contained"
+    sx={{
+      backgroundColor: '#799d44',
+      color: 'white',
+      padding: '0.5em',
+    }}
+  >
+    Send
+  </Button>
+</form>
+
             </Box>
           </Grid>
         </Grid>

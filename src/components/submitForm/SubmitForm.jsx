@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
@@ -6,11 +6,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { Box, Button, Typography } from '@mui/material';
-import Grid from '@mui/material/Grid2';
 import CloseIcon from '@mui/icons-material/Close';
-
-// import './SubmitForm.css';
-// import { AppContext } from '../../AppContext';
 
 const SubmitForm = ({ handleClose }) => {
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
@@ -38,20 +34,18 @@ const SubmitForm = ({ handleClose }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.created === 1) {
-          //   setSuccess(true)
           reset();
         }
       });
+  };
 
-  }
   const onSubmit = async data => {
     try {
-      createSheetData(data)
+      createSheetData(data);
     } catch (error) {
       alert(error.message);
     }
   };
-
 
   return (
     <Box>
@@ -59,28 +53,29 @@ const SubmitForm = ({ handleClose }) => {
         sx={{
           backgroundColor: 'white',
           padding: '2em',
-          borderRadius:'0.4em',
+          borderRadius: '0.4em',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
           width: { xs: '100vw', md: '40vw' }
         }}
       >
         <Box display={'flex'} justifyContent={'flex-end'}>
-        <CloseIcon sx={{ color: 'black', cursor: 'pointer',marginBottom:'0.2em'}} onClick={handleClose} />
-
+          <CloseIcon sx={{ color: 'black', cursor: 'pointer', marginBottom: '0.2em' }} onClick={handleClose} />
         </Box>
         <Box>
-        <Typography variant='h5' color="black" fontWeight={'bolder'} textAlign={'center'} mb={2}>
-                Submit your application
-              </Typography>
+          <Typography variant='h5' color="black" fontWeight={'bolder'} textAlign={'center'} mb={2}>
+            Submit your application
+          </Typography>
         </Box>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
             fullWidth
             label="Name"
             sx={{ marginBottom: '0.5em' }}
             variant="outlined"
             size='small'
-
+            {...register("name", { required: "Please enter your name" })}
+            error={!!errors.name}
+            helperText={errors.name ? errors.name.message : ''}
           />
           <TextField
             fullWidth
@@ -88,6 +83,15 @@ const SubmitForm = ({ handleClose }) => {
             sx={{ marginBottom: '0.5em' }}
             variant="outlined"
             size='small'
+            {...register("email", {
+              required: "Please fill out this field.",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Please enter a valid email address."
+              }
+            })}
+            error={!!errors.email}
+            helperText={errors.email ? errors.email.message : ''}
           />
           <TextField
             fullWidth
@@ -95,7 +99,9 @@ const SubmitForm = ({ handleClose }) => {
             sx={{ marginBottom: '0.5em' }}
             variant="outlined"
             size='small'
-
+            {...register("country", { required: "Please enter your country" })}
+            error={!!errors.country}
+            helperText={errors.country ? errors.country.message : ''}
           />
           <TextField
             fullWidth
@@ -103,6 +109,23 @@ const SubmitForm = ({ handleClose }) => {
             sx={{ marginBottom: '0.5em' }}
             variant="outlined"
             size='small'
+            {...register("phone", {
+              required: "Please enter your Phone",
+              minLength: {
+                value: 6,
+                message: "Phone number must be at least 6 characters long."
+              },
+              maxLength: {
+                value: 12,
+                message: "Phone number must be no longer than 12 characters."
+              },
+              pattern: {
+                value: /^\d+$/,
+                message: "Please enter a valid phone number."
+              }
+            })}
+            error={!!errors.phone}
+            helperText={errors.phone ? errors.phone.message : ''}
           />
           <TextField
             fullWidth
@@ -110,8 +133,9 @@ const SubmitForm = ({ handleClose }) => {
             sx={{ marginBottom: '0.5em' }}
             variant="outlined"
             size='small'
-
-
+            {...register("nickname", { required: "Please fill out this field." })}
+            error={!!errors.nickname}
+            helperText={errors.nickname ? errors.nickname.message : ''}
           />
           <Button
             type="submit"
@@ -128,7 +152,6 @@ const SubmitForm = ({ handleClose }) => {
         </form>
       </Box>
     </Box>
-
   );
 };
 
