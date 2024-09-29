@@ -118,7 +118,7 @@ const SubmitForm = ({ handleClose }) => {
             fullWidth
             variant="contained"
             sx={{
-              backgroundColor: '#77a32f',
+              backgroundColor: '# ',
               color: 'white',
               padding: '0.4em',
             }}

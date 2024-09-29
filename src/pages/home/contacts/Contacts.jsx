@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -8,8 +8,49 @@ import {
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import './Contacts.css'
+import { useForm } from 'react-hook-form';
 
 const Contacts = () => {
+  const { register, reset ,handleSubmit, formState: { errors } } = useForm(); 
+  const [success,setSuccess] = useState(false)
+
+  const createSheetData = (data) => {
+//     fetch('https://sheetdb.io/api/v1/n5fjzxbfyd2zo', {
+//     method: 'POST',
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//         data: [
+//             {
+//                 'name':data.name,
+//                 "country":data.country,
+//                 "email":data.email,
+//                 "phone":data.phone,
+//                 "contactMethod":data.contactMethod,
+//                 "nickname":data.nickname,
+//             }
+//         ]
+//     })
+// })
+//   .then((response) => response.json())
+//   .then((data) => {
+//     if(data.created ===1){
+//       setSuccess(true)
+//       reset();
+//     }
+//   });
+
+  }
+  const onSubmit = async data => {
+    try {
+      console.log(data)
+      // createSheetData(data)
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <Box
       id="contacts"
@@ -86,12 +127,13 @@ const Contacts = () => {
               <form>
                 <TextField
                   fullWidth
-                  label="Name"
-               
+                  label="Name"               
                   variant="outlined"
                    sx={{ marginBottom: '0.5em' }}
                   size="small"
+                  {...register("name", { required: "Please fill out this field." })}
                 />
+                 {errors.name && <span className="error-message">{'Enter your name'}</span>}
                 <TextField
                   fullWidth
                   label="Email"
