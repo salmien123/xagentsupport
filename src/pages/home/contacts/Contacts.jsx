@@ -9,7 +9,8 @@ import {
 import Grid from '@mui/material/Grid2';
 import './Contacts.css'
 import { useForm } from 'react-hook-form';
-
+import globe from '../../../images/globe.png'
+import mail from '../../../images/mail.png'
 const Contacts = () => {
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const [success, setSuccess] = useState(false)
@@ -88,7 +89,7 @@ const Contacts = () => {
               </Typography>
               <Box display="flex" alignItems="center" my={2}>
                 <img
-                  src="https://xbetagents.com/wp-content/uploads/2024/03/Picture2.png"
+                  src={globe}
                   alt="1xbet logo"
                   width={'10%'}
                 />
@@ -98,7 +99,7 @@ const Contacts = () => {
               </Box>
               <Box display="flex" alignItems="center" my={2}>
                 <img
-                  src="https://xbetagents.com/wp-content/uploads/2024/04/Untitled-design.png"
+                  src={mail}
                   alt="email logo"
                   width={'8%'}
                 />
