@@ -17,7 +17,7 @@ const style = {
 };
 
 export default function BasicModal({ open, handleClose }) {
-//   const { success, language } = React.useContext(AppContext);
+//   const { success } = React.useContext(AppContext);
 const [success,setSuccess] = useState(false)
   return (
     <div>
@@ -34,7 +34,7 @@ const [success,setSuccess] = useState(false)
             </Box>
          </Box>
           ) : (                        
-                <SubmitForm />                     
+                <SubmitForm handleClose={handleClose} />                     
           )}
         </Box>
         </Grid>

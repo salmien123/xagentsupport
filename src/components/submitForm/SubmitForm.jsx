@@ -7,42 +7,41 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { Box, Button, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import CloseIcon from '@mui/icons-material/Close';
 
 // import './SubmitForm.css';
 // import { AppContext } from '../../AppContext';
 
- const SubmitForm = () => {
-  const { register, reset ,handleSubmit, formState: { errors } } = useForm(); 
-//   const {setSuccess,language} = useContext(AppContext); 
-//   const translations = require(`../../translations/${language.toLowerCase()}.json`);
- 
+const SubmitForm = ({ handleClose }) => {
+  const { register, reset, handleSubmit, formState: { errors } } = useForm();
+
   const createSheetData = (data) => {
     fetch('https://sheetdb.io/api/v1/n5fjzxbfyd2zo', {
-    method: 'POST',
-    headers: {
+      method: 'POST',
+      headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
+      },
+      body: JSON.stringify({
         data: [
-            {
-                'name':data.name,
-                "country":data.country,
-                "email":data.email,
-                "phone":data.phone,
-                "contactMethod":data.contactMethod,
-                "nickname":data.nickname,
-            }
+          {
+            'name': data.name,
+            "country": data.country,
+            "email": data.email,
+            "phone": data.phone,
+            "contactMethod": data.contactMethod,
+            "nickname": data.nickname,
+          }
         ]
+      })
     })
-})
-  .then((response) => response.json())
-  .then((data) => {
-    if(data.created ===1){
-    //   setSuccess(true)
-      reset();
-    }
-  });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.created === 1) {
+          //   setSuccess(true)
+          reset();
+        }
+      });
 
   }
   const onSubmit = async data => {
@@ -56,77 +55,76 @@ import Grid from '@mui/material/Grid2';
 
   return (
     <Box>
-            <Box
+      <Box
+        sx={{
+          backgroundColor: 'white',
+          padding: '2em',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          width: { xs: '100vw', md: '40vw' }
+        }}
+      >
+        <Box display='flex' justifyContent={'space-between'}>
+          <Typography variant='h6' color="black" textAlign={'center'} mb={2}>
+            Submit your application
+          </Typography>
+          <CloseIcon sx={{ color: 'black', cursor: 'pointer', marginTop: '0.3em', }} onClick={handleClose} />
+        </Box>
+        <form>
+          <TextField
+            fullWidth
+            label="Name"
+            sx={{ marginBottom: '0.5em' }}
+            variant="outlined"
+            size='small'
+
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            sx={{ marginBottom: '0.5em' }}
+            variant="outlined"
+            size='small'
+          />
+          <TextField
+            fullWidth
+            label="Country"
+            sx={{ marginBottom: '0.5em' }}
+            variant="outlined"
+            size='small'
+
+          />
+          <TextField
+            fullWidth
+            label="Phone"
+            sx={{ marginBottom: '0.5em' }}
+            variant="outlined"
+            size='small'
+          />
+          <TextField
+            fullWidth
+            label="Telegram/Others account"
+            sx={{ marginBottom: '0.5em' }}
+            variant="outlined"
+            size='small'
+
+
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
             sx={{
-              padding: '10px 15px',  // Reduced padding
-              borderRadius: '10px',                        
-              backgroundColor: 'white',              
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',             
+              backgroundColor: '#799d44',
+              color: 'white',
+              padding: '0.4em',
             }}
-          >            
-            <form>
-            <Typography color='black' variant="subtitle1" sx={{ mb: 2 }}>
-              Submit your application
-            </Typography>
-              <TextField
-                fullWidth
-                label="Name"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'  // Reduced margin
-                InputProps={{
-                  sx: { fontSize: '0.9em' }  // Smaller input text
-                }}
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'
-                 
-              />
-              <TextField
-                fullWidth
-                label="Country"
-               
-                className='labelApplication custom-placeholder'
-                margin='dense'
-              
-                 
-              />
-              <TextField
-                fullWidth
-                label="Phone"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'
-                 
-              />
-              <TextField
-                fullWidth
-                label="Telegram/Others account"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'                              
-              />
-              <Button
-                fullWidth
-                variant="contained"
-                sx={{
-                  backgroundColor: '#799d44',
-                  color: 'white',
-                  marginTop: '0.75em',  // Smaller margin
-                  padding: '0.5em 0',  // Reduced padding
-                  fontSize: '0.9em',   // Smaller button text                 
-                }}
-              >
-                Send
-              </Button>
-            </form>
-          </Box>
+          >
+            Send
+          </Button>
+        </form>
+      </Box>
     </Box>
-    
+
   );
 };
 

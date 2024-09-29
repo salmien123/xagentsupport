@@ -2,130 +2,143 @@ import React from 'react';
 import {
   Box,
   Typography,
-  TextField,
   Button,
-  Link,
+  TextField,
+  Container,
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import './Contacts.css';
+import './Contacts.css'
 
 const Contacts = () => {
   return (
     <Box
       id="contacts"
-      color={'white'}
       sx={{
-        padding: { xs: '2em 1em', sm: '3em 2em', md: '5em' }, // Responsive padding
-        backgroundImage: 'url("your-background-image-url")', // Add your background image URL
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        padding: {xs:1,  md: '5em' },
+        position: 'relative',        
       }}
     >
-      <Grid
-        container
-        alignItems={'center'}
-        justifyContent={'center'}    
-      >
-        {/* First Section: Contact Information */}
-        <Grid item size={{md:6,lg:6,xs:10}} textAlign={{ xs: 'center', md: 'left' }}>
-          <Box>
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: { xs: '2.5em', sm: '3.5em', md: '4.5em' }, // Responsive font size
-                mb: 2,
-                fontWeight: 'bold',
-              }}
-            >
-              CONTACTS
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <Link href="https://www.1xbet.com" color="inherit" underline="hover">
-                1xbet.com
-              </Link>
-            </Typography>
-            <Typography variant="body1">
-              <Link href="mailto:Manager@xbetagents.com" color="inherit" underline="hover">
-                Manager@xbetagents.com
-              </Link>
-            </Typography>
-          </Box>
-        </Grid>
+      {/* Overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1,
+        }}
+      ></Box>
 
-        {/* Second Section: Form */}
-        <Grid size={{md:5}}>
-          <Box
-            sx={{
-              padding: '10px 15px',  // Reduced padding
-              borderRadius: '10px',                        
-              backgroundColor: 'white',              
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',             
-            }}
-          >            
-            <form>
-            <Typography color='black' variant="subtitle1" sx={{ mb: 2 }}>
-              Submit your application
-            </Typography>
-              <TextField
-                fullWidth
-                label="Name"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'  // Reduced margin
-                InputProps={{
-                  sx: { fontSize: '0.9em' }  // Smaller input text
-                }}
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'
-                 
-              />
-              <TextField
-                fullWidth
-                label="Country"
-               
-                className='labelApplication custom-placeholder'
-                margin='dense'
-              
-                 
-              />
-              <TextField
-                fullWidth
-                label="Phone"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'
-                 
-              />
-              <TextField
-                fullWidth
-                label="Telegram/Others account"
-                variant="outlined"
-                className='labelApplication'
-                margin='dense'                              
-              />
-              <Button
-                fullWidth
-                variant="contained"
+      <Container sx={{ position: 'relative', zIndex: 2 }}>
+        {/* Contacts Section */}
+        <Grid container spacing={{xs:1,md:5}}>
+          {/* Contact Information */}
+          <Grid size={{xs:12,md:6}}>
+            <Box textAlign={{ xs: 'center', md: 'left' }}>
+              <Typography
+                variant="h2"
                 sx={{
-                  backgroundColor: '#799d44 !important',
+                  fontSize: { xs: '2.5em', sm: '3em', md: '3.5em' },
                   color: 'white',
-                  marginTop: '0.75em',  // Smaller margin
-                  padding: '0.5em 0',  // Reduced padding
-                  fontSize: '0.9em',
-                  opacity:'revert-layer'   // Smaller button text                  
                 }}
               >
-                Send
-              </Button>
-            </form>
-          </Box>
+                CONTACTS
+              </Typography>
+              <Box display="flex" alignItems="center" my={2}>
+                <img
+                  src="https://xbetagents.com/wp-content/uploads/2024/03/Picture2.png"
+                  alt="1xbet logo"
+                  width={'10%'}
+                />
+                <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
+                  1xbet.com
+                </Typography>
+              </Box>
+              <Box display="flex" alignItems="center" my={2}>
+                <img
+                  src="https://xbetagents.com/wp-content/uploads/2024/04/Untitled-design.png"
+                  alt="email logo"
+                  width={'8%'}
+                />
+                <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
+                  Manager@1xbetagents.com
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+
+          {/* Contact Form */}
+          <Grid size={{xs:12,md:6}}>
+            <Box
+              sx={{
+                backgroundColor: 'white',
+                padding: '2em',
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              <Typography variant='h6' color="black" mb={2}>
+                Submit your application
+              </Typography>
+              <form>
+                <TextField
+                  fullWidth
+                  label="Name"
+               
+                  variant="outlined"
+                   sx={{ marginBottom: '0.5em' }}
+                  size="small"
+                />
+                <TextField
+                  fullWidth
+                  label="Email"
+               
+                  variant="outlined"
+                   sx={{ marginBottom: '0.5em' }}
+                  size="small"
+                />
+                <TextField
+                  fullWidth
+                  label="Country"
+                 
+                  variant="outlined"
+                   sx={{ marginBottom: '0.5em' }}
+                  size="small"
+                />
+                <TextField
+                  fullWidth
+                  label="Phone"
+               
+                  variant="outlined"
+                   sx={{ marginBottom: '0.5em' }}
+                  size="small"
+                />
+                <TextField
+                  fullWidth
+                  label="Telegram/Others account"
+               
+                  variant="outlined"
+                  sx={{ marginBottom: '0.5em' }}
+                  size="small"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{
+                    backgroundColor: '#799d44',
+                    color: 'white',
+                    padding: '0.5em',
+                  }}
+                >
+                  Send
+                </Button>
+              </form>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </Box>
   );
 };

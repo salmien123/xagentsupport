@@ -3,9 +3,4 @@
     background-color:#0C1424;
     opacity:0.83;
 }
-.MuiOutlinedInput-input{
-    height: 0.3em !important;    
-}
-.MuiOutlinedInput-input::placeholder{
-   color: #fcfcfc !important;
-}
+
