@@ -59,7 +59,6 @@ import Grid from '@mui/material/Grid2';
             <Box
             sx={{
               padding: '10px 15px',  // Reduced padding
-              borderRadius: '10px',                        
               backgroundColor: 'white',              
               boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',             
             }}

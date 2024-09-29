@@ -8,12 +8,16 @@ import Grid from '@mui/material/Grid2';
 
 
 const style = {
-  position: 'absolute',
-  top:'50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)', 
-  borderRadius: '1em',
-  color:"#FEBD02",
+  backgroundColor: 'transparent', // Background of the modal
+  width: { xs: '100vw', sm: '100vw', md: '60vw' }, // Full width on mobile, 60vw on desktop
+  height: { xs: '70vh', sm: '100vh', md: '80vh' }, // Full height on mobile, 80vh on desktop
+  position: 'absolute', // Ensure absolute positioning
+  top: '50%', // Center vertically
+  left: '50%', // Center horizontally
+  transform: 'translate(-50%, -50%)', // Offset by half width/height to truly center
+  padding: '20px', // Padding inside the modal
+  boxShadow: 24, // Box shadow for a nice visual effect
+  outline: 'none', // Remove default modal outline
 };
 
 export default function BasicModal({ open, handleClose }) {
@@ -25,7 +29,7 @@ const [success,setSuccess] = useState(false)
       <Grid container>
       <Grid>
         <Box sx={style}>
-        <CloseIcon sx={{ fontSize: 40, color: 'black', cursor: 'pointer', marginTop: '0.3em', }} onClick={handleClose} />
+          <Box sx={{display:'flex',justifyContent:'space-between'}}>
           {success ? (
          <Box sx={{margin:{xs:'0em 0.2em'}}}>
              <Box sx={{width:{xs:'85vw'}}}>
@@ -36,6 +40,10 @@ const [success,setSuccess] = useState(false)
           ) : (                        
                 <SubmitForm />                     
           )}
+       <CloseIcon sx={{ fontSize: 40, color: 'white', cursor: 'pointer', marginTop: '0.3em', }} onClick={handleClose} />
+
+          </Box>
+         
         </Box>
         </Grid>
         </Grid>
