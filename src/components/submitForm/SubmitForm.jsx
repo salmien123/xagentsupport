@@ -10,9 +10,9 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const SubmitForm = ({ handleClose }) => {
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
-
+  const [success,setSuccess] = useState(false)
   const createSheetData = (data) => {
-    fetch('https://sheetdb.io/api/v1/n5fjzxbfyd2zo', {
+    fetch('https://sheetdb.io/api/v1/jyj8dqbcyv126', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -24,8 +24,7 @@ const SubmitForm = ({ handleClose }) => {
             'name': data.name,
             "country": data.country,
             "email": data.email,
-            "phone": data.phone,
-            "contactMethod": data.contactMethod,
+            "phone": data.phone,            
             "nickname": data.nickname,
           }
         ]
@@ -34,6 +33,7 @@ const SubmitForm = ({ handleClose }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.created === 1) {
+          setSuccess(true)
           reset();
         }
       });
@@ -49,7 +49,18 @@ const SubmitForm = ({ handleClose }) => {
 
   return (
     <Box>
-      <Box
+      {success?<Box>
+        <Typography sx={{
+          backgroundColor: 'white',
+          padding: '2em',
+          borderRadius: '0.4em',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          width: { xs: '100vw', md: '40vw' }
+        }} variant='p' color='success'>
+        Your submission was successful.
+        </Typography>
+        <Typography  textAlign={'center'} color='success' onClick={handleClose}>Click to Go home</Typography>
+      </Box>:(<Box
         sx={{
           backgroundColor: 'white',
           padding: '2em',
@@ -150,7 +161,8 @@ const SubmitForm = ({ handleClose }) => {
             Send
           </Button>
         </form>
-      </Box>
+      </Box>)}
+      
     </Box>
   );
 };
