@@ -15,7 +15,6 @@ const style = {
   top: '50%', // Center vertically
   left: '50%', // Center horizontally
   transform: 'translate(-50%, -50%)', // Offset by half width/height to truly center
-  padding: '20px', // Padding inside the modal
   boxShadow: 24, // Box shadow for a nice visual effect
   outline: 'none', // Remove default modal outline
 };
@@ -40,8 +39,6 @@ const [success,setSuccess] = useState(false)
           ) : (                        
                 <SubmitForm handleClose={handleClose} />                     
           )}
-       <CloseIcon sx={{ fontSize: 40, color: 'white', cursor: 'pointer', marginTop: '0.3em', }} onClick={handleClose} />
-
           </Box>
          
         </Box>
