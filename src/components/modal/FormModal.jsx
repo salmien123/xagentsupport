@@ -12,19 +12,20 @@ const style = {
   width: { xs: '100vw', sm: '100vw', md: '60vw' }, // Full width on mobile, 60vw on desktop
   height: { xs: '70vh', sm: '100vh', md: '80vh' }, // Full height on mobile, 80vh on desktop
   position: 'absolute', // Ensure absolute positioning
-  top: '50%', // Center vertically
-  left: '50%', // Center horizontally
+  top:{md:'60%',xs:'60%',sm:'60%'}, // Center vertically
+  left:{md:'60%',xs:'50%',sm:'60%'}, // Center horizontally
   transform: 'translate(-50%, -50%)', // Offset by half width/height to truly center
-  boxShadow: 24, // Box shadow for a nice visual effect
-  outline: 'none', // Remove default modal outline
+  outline: 'none',
+   // Remove default modal outline
+  
 };
 
 export default function BasicModal({ open, handleClose }) {
 //   const { success } = React.useContext(AppContext);
 const [success,setSuccess] = useState(false)
   return (
-    <div>
-      <Modal open={open} onClose={handleClose}>
+
+      <Modal  open={open} onClose={handleClose}>
       <Grid container>
       <Grid>
         <Box sx={style}>
@@ -45,6 +46,6 @@ const [success,setSuccess] = useState(false)
         </Grid>
         </Grid>
       </Modal>
-    </div>
+
   );
 }

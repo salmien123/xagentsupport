@@ -39,11 +39,11 @@ const Profitable = () => {
       <Box component={'h1'} sx={{ fontSize: { lg: '3rem', sm: "1.8rem", xs: '1.8rem', md: '3rem' } }}>
         Why it’s profitable to be an agent?
       </Box>
-      <Grid container alignItems={'center'} justifyContent={'space-between'}>
-        <Grid size={{ xs: 12, sm: 12, md: 6 }}>{profitableSlidesData.map((slide, index) => (
+      <Grid container alignItems={'center'} justifyContent={{md:'space-between',xs:'center'}}>
+        <Grid size={{ xs:10, sm: 12, md: 6 }}>{profitableSlidesData.map((slide, index) => (
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: { sm: 'wrap', xs: 'wrap', md: 'nowrap', lg: 'nowrap' } }} key={index} >
             <Box component={'img'} src={slide.icon} alt={`Icon ${index + 1}`} />
-            <Box marginLeft={{ md: '1em' }} ><h2>{slide.header}</h2><p>{slide.paragraph}</p></Box>
+            <Box  marginLeft={{md:'1em'}} textAlign={{xs:'center',md:'left'}} ><Box component={'h3'}>{slide.header}</Box><Box component={'p'}>{slide.paragraph}</Box></Box>
           </Box>
         ))}</Grid>
         <Grid size={{ xs: 12, sm: 12, md: 5 }}><Box component={'img'} src={phone3} alt='1xbetagent' sx={{ width: '110%' }}></Box></Grid>
