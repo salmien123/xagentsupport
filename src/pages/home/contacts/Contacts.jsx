@@ -90,7 +90,7 @@ const Contacts = () => {
               <Box display="flex" alignItems="center" my={2}>
                 <img
                   src={globe}
-                  alt="1xbet logo"
+                  alt="1xbetsupport globe logo"
                   width={'10%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
@@ -100,7 +100,7 @@ const Contacts = () => {
               <Box display="flex" alignItems="center" my={2}>
                 <img
                   src={mail}
-                  alt="email logo"
+                  alt="1xbetsupport email logo"
                   width={'8%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
